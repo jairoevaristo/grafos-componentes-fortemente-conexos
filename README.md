@@ -1,9 +1,9 @@
 # Relatório de Desenvolvimento do Algoritmo Kosaraju
-Introdução
+## Introdução
 Este relatório descreve o processo de construção do algoritmo Kosaraju para encontrar componentes fortemente conectados em um grafo, desenvolvido por quatro alunos de graduação ao longo de quatro dias, com duas horas de trabalho por dia. O desenvolvimento envolveu diversas etapas, desde a compreensão teórica do algoritmo até a implementação prática e a resolução de desafios encontrados durante o processo.
 
 # Dia 1: Compreensão Teórica
-Atividades
+## Atividades
 Estudo individual: Cada aluno estudou a teoria por trás do algoritmo Kosaraju e componentes fortemente conectados.
 Discussão em grupo: Reunião para compartilhar o entendimento do algoritmo e esclarecer dúvidas.
 
@@ -15,7 +15,7 @@ Desafios
 
 # Dia 3: Implementação
 ## Atividades
-Codificação das funções: Implementação das funções read_graph, dfs, transpose_graph e kosaraju.
+Codificação das funções: Implementação das funções `read_graph`, `dfs`, `transpose_graph` e `kosaraju`.
 Teste e depuração: Teste inicial do código e correção de erros.
 
 # Dia 4: Testes e Finalização
