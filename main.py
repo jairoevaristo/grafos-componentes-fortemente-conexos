@@ -1,66 +1,66 @@
-def read_graph(filename):
-    with open(filename, 'r') as file:
-        V = int(file.readline().strip())
-        graph = [[] for _ in range(V)]
+def ler_grafo(nome_arquivo):
+    with open(nome_arquivo, 'r') as arquivo:
+        V = int(arquivo.readline().strip())
+        grafo = [[] for _ in range(V)]
         for i in range(V):
-            line = file.readline().strip().split()
-            vertex = int(line[0])
-            neighbors = list(map(int, line[1:]))
-            graph[vertex] = neighbors
-    return V, graph
+            linha = arquivo.readline().strip().split()
+            vertice = int(linha[0])
+            vizinhos = list(map(int, linha[1:]))
+            grafo[vertice] = vizinhos
+    return V, grafo
 
-def kosaraju(V, graph):
-    def dfs(v, visited, stack):
-        visited[v] = True
-        for neighbor in graph[v]:
-            if not visited[neighbor]:
-                dfs(neighbor, visited, stack)
-        stack.append(v)
+def kosaraju(V, grafo):
+    def dfs(v, visitado, pilha):
+        visitado[v] = True
+        for vizinho in grafo[v]:
+            if not visitado[vizinho]:
+                dfs(vizinho, visitado, pilha)
+        pilha.append(v)
 
-    def transpose_graph(V, graph):
-        transposed = [[] for _ in range(V)]
+    def transpor_grafo(V, grafo):
+        transposto = [[] for _ in range(V)]
         for v in range(V):
-            for neighbor in graph[v]:
-                transposed[neighbor].append(v)
-        return transposed
+            for vizinho in grafo[v]:
+                transposto[vizinho].append(v)
+        return transposto
 
-    def dfs_transposed(v, visited, component, transposed_graph):
-        visited[v] = True
-        component.append(v)
-        for neighbor in transposed_graph[v]:
-            if not visited[neighbor]:
-                dfs_transposed(neighbor, visited, component, transposed_graph)
+    def dfs_transposto(v, visitado, componente, grafo_transposto):
+        visitado[v] = True
+        componente.append(v)
+        for vizinho in grafo_transposto[v]:
+            if not visitado[vizinho]:
+                dfs_transposto(vizinho, visitado, componente, grafo_transposto)
 
-    stack = []
-    visited = [False] * V
+    pilha = []
+    visitado = [False] * V
 
     # Passo 1: Preenchendo a pilha com a ordem de finalização dos vértices
     for i in range(V):
-        if not visited[i]:
-            dfs(i, visited, stack)
+        if not visitado[i]:
+            dfs(i, visitado, pilha)
 
     # Passo 2: Transpor o grafo
-    transposed_graph = transpose_graph(V, graph)
+    grafo_transposto = transpor_grafo(V, grafo)
 
     # Passo 3: Processar os vértices na ordem inversa da finalização
-    visited = [False] * V
-    components = []
-    while stack:
-        v = stack.pop()
-        if not visited[v]:
-            component = []
-            dfs_transposed(v, visited, component, transposed_graph)
-            components.append(component)
+    visitado = [False] * V
+    componentes = []
+    while pilha:
+        v = pilha.pop()
+        if not visitado[v]:
+            componente = []
+            dfs_transposto(v, visitado, componente, grafo_transposto)
+            componentes.append(componente)
     
-    return components
+    return componentes
 
-def main(filename):
-    V, graph = read_graph(filename)
-    components = kosaraju(V, graph)
+def main(nome_arquivo):
+    V, grafo = ler_grafo(nome_arquivo)
+    componentes = kosaraju(V, grafo)
     
-    for i, component in enumerate(components):
-        print(f"Component {i+1}: {' '.join(map(str, component))}")
+    for i, componente in enumerate(componentes):
+        print(f"Componente {i+1}: {' '.join(map(str, componente))}")
 
 # Exemplo de uso
-filename = 'teste-grafos.txt'
-main(filename)
+nome_arquivo = 'teste-grafos.txt'
+main(nome_arquivo)
