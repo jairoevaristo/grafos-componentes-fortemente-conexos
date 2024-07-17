@@ -53,5 +53,8 @@ Este relatório descreve o processo de construção do algoritmo Kosaraju para e
 # Resultados
 Ao final do trabalho, conseguimos implementar o algoritmo Kosaraju com sucesso. O código passou nos casos que testamos e o processo foi documentado adequadamente.
 
+<img width="488" alt="Captura de Tela 2024-07-16 às 22 21 18" src="https://github.com/user-attachments/assets/74c42f04-b201-4859-8ab7-623546a5cf33">
+<img width="488" height="500" alt="Captura de Tela 2024-07-16 às 22 21 18" src="https://github.com/user-attachments/assets/05c7a411-8ba1-4b28-b17c-b6c553b636b8">
+
 # Conclusão
 A implementação do algoritmo de Kosaraju para encontrar componentes fortemente conectados em um grafo dirigido demonstra uma abordagem eficiente e estruturada para resolver esse problema fundamental em teoria dos grafos.
